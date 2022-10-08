@@ -25,7 +25,7 @@ def get_filelist(dir, Filelist):
 
 
 if __name__ == '__main__':
-    list = get_filelist(air_path, [])
+    list = get_filelist(case_path, [])
     print(len(list))
     for e in list:
         print(e)

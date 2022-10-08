@@ -35,7 +35,6 @@ class Air_Case_Handler(AirtestCase):
         root_log = log_path
         if os.path.isdir(root_log):
             shutil.rmtree(root_log)
-
         else:
             os.makedirs(root_log)
 
@@ -47,7 +46,7 @@ class Air_Case_Handler(AirtestCase):
                 script = os.path.join(case_dir, file)
 
                 case_log = os.path.join(root_path, "log/" + caseDirName)
-                print(case_log+"******************")
+                # print(case_log+"******************")
 
                 if os.path.isdir(case_log):
                     # print(case_log)
