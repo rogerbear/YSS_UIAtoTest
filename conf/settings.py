@@ -12,4 +12,4 @@ report_path = os.path.join(root_path, 'report')  # 测试报告路径
 data_path = os.path.join(root_path, 'data')  # 测试数据目录
 template_name = "summary_template.html"  # 测试报告模板名称
 clear_report = False  # 是否清空旧测试报告
-test_pkg = "com.digitalgd.dgyss" # 被测App应用包名
+test_pkg = "com.digitalgd.dgyss"  # 被测App应用包名

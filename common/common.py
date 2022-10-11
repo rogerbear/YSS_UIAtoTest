@@ -6,8 +6,8 @@
 
 __author__ = "neallyl"
 
-import os, sys
-
+import os
+import sys
 
 curPath = os.path.dirname(os.path.dirname(__file__))
 sys.path.append(curPath)
@@ -47,7 +47,7 @@ class Common(object):
             self.s = c.session()
             self.w, self.h = self.s.window_size()
         if self.platform == 'Android':
-             self.adb = ADB(serialno=G.DEVICE.uuid)
+            self.adb = ADB(serialno=G.DEVICE.uuid)
 
     @property
     def get_rotation_status(self):
@@ -499,7 +499,7 @@ class Common(object):
         flag = True
         i = 0
         while flag:
-            if not self.ocr_text_exist(text, num, full_match) == (0,0):
+            if not self.ocr_text_exist(text, num, full_match) == (0, 0):
                 flag = False
             time.sleep(1)
             i = i + 1
@@ -665,7 +665,7 @@ class Common(object):
         适用平台：Android
         """
         self.expand_notification()
-        for num in range(0,10):
+        for num in range(0, 10):
             if poco(text=text).exists():
                 self.poco_click(text=text)
                 break
@@ -678,8 +678,8 @@ class Common(object):
         """
         self.expand_notification()
         flag = False
-        for num in range(0,5):
-            if not self.ocr_text_exist(text) == (0,0):
+        for num in range(0, 5):
+            if not self.ocr_text_exist(text) == (0, 0):
                 flag = True
                 break
             self.poco_swipe((0.5, 0.5), (0.5, 0.1))
@@ -706,5 +706,5 @@ class Common(object):
             wake()
             self.adb.unlock()
 
-    def get_app_version_name(self,pkg):
+    def get_app_version_name(self, pkg):
         return device.get_app_version_name(pkg)
