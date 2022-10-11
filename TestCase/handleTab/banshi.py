@@ -20,7 +20,7 @@ from conf.settings import *
 # sleep(2)
 # connect_device("IOS:////127.0.0.1:8100")
 # connect_device("Android://127.0.0.1:5037/c6366a94")
-# connect_device("Android:///?cap_method=javacap")  # 单独跑就需要
+connect_device("Android:///?cap_method=javacap")  # 单独跑就需要
 
 from common.common import Common
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
@@ -41,8 +41,8 @@ elif platform == 'IOS':
 
     poco = iosPoco()
 '''
-# auto_setup(__file__,logdir=None)
-# yss_app_pkg = "com.digitalgd.dgyss"  # 单独跑就需要
+auto_setup(__file__) # 单独跑就需要
+yss_app_pkg = "com.digitalgd.dgyss"  # 单独跑就需要
 common = Common()
 
 def restart_app(pkg):

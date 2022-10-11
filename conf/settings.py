@@ -3,7 +3,8 @@
 import os
 
 deviceType = "app"  # 设备类别：app、win和web
-devices = ['Android://127.0.0.1:5037/c6366a94']  # 设备信息，只有当deviceType为app是有效
+devices = ['Android://127.0.0.1:5037/c6366a94',
+           'Android://127.0.0.1:5037/3JU5T18227002110']  # 设备信息，只有当deviceType为app是有效
 root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # 工程根目录
 case_path = os.path.join(root_path, 'TestCase')  # 脚本目录
 log_path = os.path.join(root_path, 'log')  # 日志目录

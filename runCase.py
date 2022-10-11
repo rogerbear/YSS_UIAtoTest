@@ -40,7 +40,7 @@ class Air_Case_Handler(AirtestCase):
         # else:
         #     os.makedirs(root_log)
 
-        def output_file(caseDirName, caseName):
+        def add_case(caseDirName, caseName):
             case_log = os.path.join(root_path, "logReport/" + caseDirName)
             # script_run_log = os.path.join(case_log, caseDirName + '.log')
             if os.path.isdir(case_log):
@@ -48,14 +48,14 @@ class Air_Case_Handler(AirtestCase):
                 shutil.rmtree(case_log)
             else:
                 # pdb.set_trace()
+                # 创建存放运行结果的目录
                 os.makedirs(case_log)
 
             if deviceType.upper() == "WEB":
                 args = Namespace(log=case_log, recording=None, script=script,
                                  language="zh")
             elif deviceType.upper() == "APP":
-                args = Namespace(device=device, log=case_log, script=script,
-                                 no_image=False,
+                args = Namespace(device=device, log=case_log, script=script, no_image=False,
                                  recording=None, language="zh")
             else:
                 args = Namespace(device=device, log=case_log, recording=None, script=script,
@@ -70,6 +70,7 @@ class Air_Case_Handler(AirtestCase):
                     for html_log in dir:
                         if '.log' in html_log:
                             html_save_dir = html_log
+                # 存放html文件的目录
                 html = os.path.join(html_save_dir, "log.html")
                 report_path = case_log
                 html_report = LogToHtml(script_root=script,
@@ -82,25 +83,26 @@ class Air_Case_Handler(AirtestCase):
                 # rpt = report.LogToHtml(script, case_log)
                 # rpt.report("log_template.html", output_file=html)
                 result = {}
+                # 把手写脚本和录制脚本放在列表中
                 if caseName.endswith(".py"):
                     result["name"] = caseName.replace('.py', '')
                 elif caseName.endswith(".air"):
                     result["name"] = caseName.replace('.air', '')
                 result["result"] = html_report.test_result
                 results.append(result)
-
+        # 添加脚本
         for file in get_filelist(case_dir, []):
             if file.endswith(".py"):
                 caseName = file
                 caseDirName = file.replace(".py", "").split('/')[-1]
                 # print(caseDirName+"*******************")
                 script = os.path.join(case_dir, file)
-                output_file(caseDirName, caseName)
+                add_case(caseDirName, caseName)
             elif file.endswith(".air"):
                 caseName = file
                 caseDirName = file.replace(".air", "")
                 script = os.path.join(case_dir, file)
-                output_file(caseDirName, caseName)
+                add_case(caseDirName, caseName)
 
         end_time = datetime.datetime.now()
         end_time_fmt = end_time.strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
@@ -132,6 +134,9 @@ class Air_Case_Handler(AirtestCase):
 
 
 if __name__ == "__main__":
-    for device in ['Android://127.0.0.1:5037/c6366a94']:
-        test = Air_Case_Handler(device)
-        test.run_case(case_path, device)
+    for device in devices:
+        try:
+            test = Air_Case_Handler(device)
+            test.run_case(case_path, device)
+        except Exception as e:
+            pass
