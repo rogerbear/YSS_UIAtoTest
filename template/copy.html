@@ -53,7 +53,7 @@
 	        </tr>
 	        {% for r in results %}
 	        <tr>
-	            <td class='details-col-elapsed'><a href="log/{{r.name}}/log.html" target="view_window">{{r.name}}</a></td>
+	            <td class='details-col-elapsed'><a href="{{r.name}}/log.html" target="view_window">{{r.name}}</a></td>
 	            <td class="{{'success' if r.result else 'fail'}}">{{"成功" if r.result else "失败"}}</td>
 	        </tr>
 	        {% endfor %}

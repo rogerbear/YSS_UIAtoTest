@@ -60,7 +60,7 @@
 		        {% for r in results %}
 		        <tr>
 		        	<td class="details-col-elapsed  col-xs-1">{{loop.index}}</td>
-		            <td class='details-col-elapsed  col-xs-3'><a href="../log/{{r.name}}/log.html" target="view_window">{{r.name}}</a></td>
+		            <td class='details-col-elapsed  col-xs-3'><a href="/{{r.name}}/log.html" target="view_window">{{r.name}}</a></td>
 		            <td class="{{'success' if r.result else 'fail'}}   col-xs-3">{{"成功" if r.result else "失败"}}</td>
 		        </tr>
 		        {% endfor %}

@@ -1,6 +1,10 @@
 # coding = utf-8
 # author:roger
 
+import os
+
+current_path = os.path.abspath(__file__)
+print(current_path.split('/')[-2])
 import datetime
 import io
 import shutil
@@ -42,6 +46,7 @@ class Air_Case_Handler(AirtestCase):
 
         def add_case(caseDirName, caseName):
             case_log = os.path.join(root_path, "logReport/" + caseDirName)
+            print(case_log.split('/')[-2:], "这是caselog")
             # script_run_log = os.path.join(case_log, caseDirName + '.log')
             if os.path.isdir(case_log):
                 # print(case_log)
@@ -85,11 +90,16 @@ class Air_Case_Handler(AirtestCase):
                 result = {}
                 # 把手写脚本和录制脚本放在列表中
                 if caseName.endswith(".py"):
-                    result["name"] = caseName.replace('.py', '')
+                    # result["name"] = caseName.replace('.py', '')
+                    result['name'] = "".join(
+                        [current_path.split('/')[-2], '/logReport/', caseDirName, '/', caseDirName, '.log'])
                 elif caseName.endswith(".air"):
-                    result["name"] = caseName.replace('.air', '')
+                    # result["name"] = caseName.replace('.air', '')
+                    result['name'] = "".join(
+                        [current_path.split('/')[-2], '/logReport/', caseDirName, '/', caseDirName, '.log'])
                 result["result"] = html_report.test_result
                 results.append(result)
+
         # 添加脚本
         for file in get_filelist(case_dir, []):
             if file.endswith(".py"):

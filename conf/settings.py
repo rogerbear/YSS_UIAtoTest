@@ -4,9 +4,9 @@ import os
 
 deviceType = "app"  # 设备类别：app、win和web
 devices = ['Android://127.0.0.1:5037/c6366a94',
-           'Android://127.0.0.1:5037/3JU5T18227002110']  # 设备信息，只有当deviceType为app是有效
+           'Android://127.0.0.1:5037/3061081556ZZZZZ']  # 设备信息，只有当deviceType为app是有效
 root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # 工程根目录
-case_path = os.path.join(root_path, 'TestCase')  # 脚本目录
+case_path = os.path.join(root_path, 'TestCase/YKM/showYKM')  # 脚本目录
 log_path = os.path.join(root_path, 'log')  # 日志目录
 template_path = os.path.join(root_path, 'template')  # 测试报告模板目录
 report_path = os.path.join(root_path, 'report')  # 测试报告路径
